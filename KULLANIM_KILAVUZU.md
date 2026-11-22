@@ -4,10 +4,12 @@
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
+> Bu kılavuz kartın içinde de vardır. Panelde **Ayarlar > Yardım > Kullanım kılavuzu**'na ya da giriş sayfasındaki **Kullanım kılavuzu** bağlantısına dokunun; internet gerekmez.
+
 ## İçindekiler
 
 1. [İlk bağlantı](#1-ilk-bağlantı)
-2. [Isıtma](#2-ısıtma)
+2. [Isıtma](#2-isıtma)
 3. [Güvenlik ve hırsız alarmı](#3-güvenlik-ve-hırsız-alarmı)
 4. [İkazlar ve sesler](#4-ikazlar-ve-sesler)
 5. [Olaylar](#5-olaylar)
