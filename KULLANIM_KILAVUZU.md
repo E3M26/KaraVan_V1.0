@@ -1,6 +1,6 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.0 · Android uygulaması sürüm 1.2**
+**Kart yazılımı sürüm 1.1 · Android uygulaması sürüm 1.2**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
@@ -69,6 +69,8 @@ Webasto düğmesi her basışta aç/kapa yaptığı için kart, Webasto'nun ger�
 
 **Örnek:** Hedef 21,5 °C ve açma-kapama aralığı ±1 °C ise, Webasto ortam 20,5 °C'ye düşünce başlar, 22,5 °C'ye çıkınca durur.
 
+> Kart açıldığında da önce 2 dakika Webasto'nun çalışıp çalışmadığını aynı yöntemle anlar.
+>
 > Kart her açıldığında **ısıtma kapalı** başlar. Elektrik kesilip geldiğinde Webasto kendiliğinden çalışmaz; ısıtmayı yeniden açmanız gerekir.
 
 <br clear="right">
@@ -79,7 +81,7 @@ Webasto düğmesi her basışta aç/kapa yaptığı için kart, Webasto'nun ger�
 <tr>
 <td align="center"><img src="kilavuz/04_isitma_basliyor.png" width="200"><br><b>Başlıyor</b></td>
 <td align="center"><img src="kilavuz/05_isitma_duruyor.png" width="200"><br><b>Duruyor</b></td>
-<td align="center"><img src="kilavuz/06_isitma_kapali.png" width="200"><br><b>Kapalı</b></td>
+<td align="center"><img src="kilavuz/27_isitma_kontrol.png" width="200"><br><b>Kontrol ediliyor</b></td>
 <td align="center"><img src="kilavuz/07_isitma_ariza.png" width="200"><br><b>Arıza</b></td>
 </tr>
 </table>
@@ -90,19 +92,27 @@ Webasto düğmesi her basışta aç/kapa yaptığı için kart, Webasto'nun ger�
 | **Başlıyor** | Başlatma komutu gönderildi. Kart çıkışın ısınmasını bekliyor; çubuk ısınmanın ne kadarının tamamlandığını ve kalan süreyi gösterir |
 | **Çalışıyor** | Çıkış ısındı, Webasto çalışıyor |
 | **Duruyor** | Durdurma komutu gönderildi. Kart çıkışın soğumasını bekliyor; çubuk soğuma ilerlemesini gösterir |
-| **Arıza** | Webasto beklendiği gibi başlamadı ya da durmadı. Otomatik kontrol durur |
-| **Bilinmiyor** | Kart yeni açıldı, durum henüz anlaşılmadı |
+| **Kontrol ediliyor** | İkinci kontrol: kart Webasto'ya hiç komut göndermeden çıkış sıcaklığının gidişatını izliyor (aşağıya bakın) |
+| **Arıza** | İki kontrolde de Webasto'nun beklendiği gibi başlamadığı ya da durmadığı kesinleşti. Otomatik kontrol durur |
+| **Bekleniyor** | Kart yeni açıldı, sensörler okunuyor |
 
-**Başlatma:** Kart düğmeye basar ve çıkışın 5 dakika içinde 10 °C ısınmasını bekler.
+Kart Webasto'yu iki aşamada kontrol eder. Arıza ancak iki kontrol de aynı sonucu verirse gösterilir.
 
-- En az 3 °C ısındıysa Webasto yavaş da olsa çalışıyor kabul edilir.
-- Hiç ısınmadıysa bir kez daha dener.
-- Yine olmazsa **Arıza** verir.
+**1. kontrol (esas kontrol):**
 
-**Durdurma:** Kart düğmeye basar ve çıkışın 5 dakika içinde en yüksek değerinden 3 °C soğumasını bekler.
+- **Başlatma:** Kart düğmeye basar ve çıkışın 5 dakika içinde 10 °C ısınmasını bekler. En az 3 °C ısındıysa da Webasto çalışıyor kabul edilir.
+- **Durdurma:** Kart düğmeye basar ve çıkışın 5 dakika içinde en yüksek değerinden 3 °C soğumasını bekler. Webasto'nun fanı durduktan sonra bir süre ılık hava üflediği için süre sonunda en az 1 °C soğuma da yeterli sayılır.
 
-- Webasto'nun fanı durduktan sonra bir süre ılık hava üflemeye devam eder. Bu yüzden süre sonunda en az 1 °C soğuma yeterli sayılır.
-- Hiç soğumadıysa **Arıza** verir. Webasto'yu yanlışlıkla yeniden çalıştırmamak için ikinci kez düğmeye **basmaz**.
+**2. kontrol (arızadan emin olmak için):** 1. kontrol tutmazsa kart hemen arıza vermez, durumu **Kontrol ediliyor** olur. Kart bu sırada Webasto'ya **hiçbir komut göndermez**; 3 dakika boyunca çıkış sıcaklığının eğimine (yükseliyor mu, düşüyor mu) ve iç ortamdan ne kadar sıcak olduğuna bakar. Sonuç belirsizse izlemeyi en fazla iki kez 2'şer dakika uzatır.
+
+| Ne doğrulanıyordu | Çıkış yükseliyor ya da sıcak ve sabit | Çıkış düşüyor ya da iç ortama yakın |
+| --- | --- | --- |
+| Başlatma | Webasto çalışıyor kabul edilir, arıza yok | Webasto başlamamış: kart bir kez daha başlatmayı dener; ikinci denemede de iki kontrol tutmazsa **Arıza: başlamadı** |
+| Durdurma | Webasto durmamış: **Arıza: kapanmadı**. Webasto'yu yanlışlıkla yeniden çalıştırmamak için kart ikinci kez düğmeye **basmaz** | Webasto durmuş kabul edilir, arıza yok |
+
+Eğilime bakmak, sensör Webasto ağzından uzakta olduğunda ve kapı açılıp iç ortam birden soğuduğunda da doğru karar verir. Çünkü karar, Webasto çıkışındaki sıcaklığın kendi gidişatına göre verilir; iç ortamdaki ani değişimler sonucu değiştirmez. Webasto çalıştığı hâlde dış hava çok soğuk olduğu için karavan hedefe ulaşamıyorsa, bu arıza sayılmaz; Webasto çalışmaya devam eder.
+
+Bu yüzden gerçek bir arızanın ekrana gelmesi biraz daha uzun sürer: başlamayan bir Webasto için yaklaşık 16 dakika (en fazla 24), durmayan bir Webasto için yaklaşık 8 dakika (en fazla 12).
 
 Bu süreleri ve sıcaklık farklarını [Ayarlar > Isıtma](#isıtma)'dan değiştirebilirsiniz.
 
@@ -110,7 +120,7 @@ Bu süreleri ve sıcaklık farklarını [Ayarlar > Isıtma](#isıtma)'dan deği�
 
 1. Webasto'yu kontrol edin: yakıt, sigorta, Webasto'nun kendi arıza kodu.
 2. Webasto'nun gerçekte açık mı kapalı mı olduğuna bakın.
-3. Ekrandaki **Arızayı sil** düğmesine basın. Otomatik kontrol yeniden başlar.
+3. Ekrandaki **Arızayı sil** düğmesine basın. Kart 2 dakika boyunca çıkış sıcaklığının gidişatını izleyerek Webasto'nun o an çalışıp çalışmadığını anlar, sonra otomatik kontrole döner. Emin olamazsa Webasto'yu kapalı kabul eder; yanılmışsa ilk başlatmada kendini düzeltir.
 
 **Koruma süreleri:**
 
@@ -389,7 +399,8 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 | Bağlandım ama sayfa açılmıyor | Tarayıcıya `192.168.4.1` yazın. Telefonun "internet yok" sorusuna "bağlı kal" deyin; mobil veriyi kısa süre kapatmak da yardımcı olur |
 | "Kullanıcı adı veya şifre hatalı" | Büyük/küçük harfe dikkat edin. Unuttuysanız BOOT düğmesini 30 sn basılı tutun |
 | Giriş 60 sn kilitlendi | 5 kez yanlış şifre girildi; bir dakika bekleyin |
-| Webasto sık sık "Arıza" veriyor | Webasto'yu kontrol edin. Sorun yoksa Ayarlar > Isıtma > Gelişmiş'teki beklenen ısınma/soğuma değerlerini küçültün |
+| Webasto sık sık "Arıza" veriyor | Arıza ancak iki kontrol de tutmazsa verilir; Webasto'yu ve çıkış sensörünü kontrol edin (sensör Webasto'nun üflediği havayı görmeli). Sorun yoksa Ayarlar > Isıtma > Gelişmiş'teki beklenen ısınma/soğuma değerlerini küçültün |
+| Durum uzun süre "Kontrol ediliyor" | Normaldir; en fazla 7 dakika sürer. Bu sırada Webasto'ya komut gönderilmez |
 | Webasto ısıtma kapalıyken çalışıyor | Webasto elle açılmış olabilir. Kart ısıtma kapalıyken Webasto'ya komut göndermez; Webasto'yu kendi düğmesinden kapatın |
 | "İç ortam sensörü okunamıyor" | Sensör kablosunu kontrol edin. Bu sırada Webasto otomatik başlatılmaz |
 | Duman ikazı susmuyor | Gerçek duman yoksa "dedektörü şimdi sıfırla" düğmesini kullanın |
@@ -427,4 +438,4 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 ---
 
-*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.0.0*
+*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.1.0*
