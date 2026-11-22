@@ -1,6 +1,6 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.3 · Android uygulaması sürüm 1.3**
+**Kart yazılımı sürüm 1.3 · Android uygulaması sürüm 1.4**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
@@ -368,7 +368,7 @@ Tarayıcı yerine KaraVan uygulamasını kullanırsanız iki şey kazanırsını
 3. Uygulamayı açın.
     - **Bildirim izni** sorulduğunda **İzin ver**'i seçin.
     - **Pil tasarrufu muafiyeti** sorulduğunda **İzin ver**'i seçin.
-4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin. Telefon henüz bağlı değilse uygulama logolu **"Bağlantı bekleniyor"** ekranında bekler ve bağlantı gelince paneli kendiliğinden açar.
+4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin. Telefon KaraVan ağına bağlı değilse (örneğin evdeki Wi-Fi'ye bağlıysa) uygulama logolu **"Bağlantı bekleniyor"** ekranında bekler; kart bulunamazsa **Wi-Fi ayarları** düğmesi çıkar. Telefon KaraVan ağına bağlanınca panel kendiliğinden açılır; bağlantı koparsa bu ekran geri gelir.
 
 **Bildirimler nasıl çalışır:**
 
