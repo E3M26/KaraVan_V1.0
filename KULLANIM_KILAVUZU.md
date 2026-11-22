@@ -1,6 +1,6 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.3 · Android uygulaması sürüm 1.4**
+**Kart yazılımı sürüm 1.3.1 · Android uygulaması sürüm 1.4**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
@@ -346,11 +346,12 @@ Sayısal ayarlar **−** / **+** düğmeleriyle değiştirilir. Basılı tutarsa
     - Kart en fazla 4 cihaza izin verir.
     - Tanımadığınız bir cihaz görürseniz Wi-Fi şifresini değiştirin.
 - **Servis:**
-    - Yedek röleyi (Röle 4) açıp kapatabilir, buzzer'ı deneyebilirsiniz.
-    - Altta tüm rölelerin anlık durumu görünür.
+    - Dört rölenin ne işe yaradığı ve anlık durumu renkli olarak görünür: yeşil = normal / açık, sarı = geçici işlem (duman beslemesi kesik, Webasto düğmesine basılıyor), kırmızı = siren çalıyor, gri = boşta.
+    - Yedek röle (Röle 4) yanındaki düğmeyle açılıp kapatılır; buzzer buradan denenebilir.
 - **Sistem:**
     - Yazılım sürümünü, çalışma süresini ve bellek durumunu gösterir.
     - **Çıkış yap** ve **Yeniden başlat** düğmeleri buradadır. Yeniden başlayan kart ısıtmayı son durumuyla (açık/kapalı) sürdürür.
+- **Kullanım kılavuzu (PDF):** Bakım bölümünün en altındaki bağlantı bu kılavuzu GitHub'dan indirir (internet gerekir).
 
 ---
 
@@ -454,4 +455,4 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 ---
 
-*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.0*
+*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.1*

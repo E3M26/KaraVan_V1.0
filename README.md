@@ -25,4 +25,4 @@ Uygulama bu depoya `KaraVanApp.zip` yüklendiğinde GitHub tarafından otomatik 
 İlk girişte giriş şifresini ve Wi-Fi şifresini değiştirin.
 
 ---
-Kart yazılımı 1.3.0 · Uygulama 1.4
+Kart yazılımı 1.3.1 · Uygulama 1.4
