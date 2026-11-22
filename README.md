@@ -4,7 +4,9 @@ ESP32-S3 tabanlı karavan kontrol kartı: Webasto ısıtıcıyı otomatik çalı
 
 <p align="center"><img src="kilavuz/03_isitma_tam.png" width="230"> <img src="kilavuz/10_guvenlik_kurulu.png" width="230"> <img src="kilavuz/13_ikaz_duman.png" width="230"></p>
 
-## 📖 [Kullanım kılavuzu](KULLANIM_KILAVUZU.md)
+## 📖 Kullanım kılavuzu
+
+**[Resimli kullanım kılavuzunu indir (PDF)](KULLANIM_KILAVUZU.pdf)** · [Sayfada oku](KULLANIM_KILAVUZU.md)
 
 ## Android uygulaması
 
@@ -23,4 +25,4 @@ Uygulama bu depoya `KaraVanApp.zip` yüklendiğinde GitHub tarafından otomatik 
 İlk girişte giriş şifresini ve Wi-Fi şifresini değiştirin.
 
 ---
-Kart yazılımı 1.0.0 · Uygulama 1.2
+Kart yazılımı 1.3.0 · Uygulama 1.3

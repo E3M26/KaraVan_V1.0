@@ -1,10 +1,8 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.1 · Android uygulaması sürüm 1.2**
+**Kart yazılımı sürüm 1.3 · Android uygulaması sürüm 1.3**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
-
-> Bu kılavuz kartın içinde de vardır. Panelde **Ayarlar > Yardım > Kullanım kılavuzu**'na ya da giriş sayfasındaki **Kullanım kılavuzu** bağlantısına dokunun; internet gerekmez.
 
 ## İçindekiler
 
@@ -26,13 +24,13 @@ KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz
 <img src="kilavuz/01_giris.png" width="260" align="right">
 
 1. Telefonun Wi-Fi ayarlarını açın ve **KaraVan-XXXX** ağına bağlanın. XXXX karta özel dört karakterdir.
-   - Fabrika Wi-Fi şifresi: **karavan2026**
+    - Fabrika Wi-Fi şifresi: **karavan2026**
 2. Telefon "Bu ağda internet yok" diye sorarsa **bağlı kal**'ı seçin.
 3. Giriş sayfası genellikle kendiliğinden açılır. Açılmazsa tarayıcıya **192.168.4.1** yazın.
 4. Giriş bilgileriyle oturum açın.
-   - Fabrika kullanıcı adı: **admin**
-   - Fabrika şifresi: **karavan**
-   - **Beni hatırla**'yı işaretlerseniz 30 gün boyunca yeniden şifre sorulmaz.
+    - Fabrika kullanıcı adı: **admin**
+    - Fabrika şifresi: **karavan**
+    - **Beni hatırla**'yı işaretlerseniz 30 gün boyunca yeniden şifre sorulmaz.
 
 > **İlk iş:** Ayarlar bölümünden hem giriş şifresini hem Wi-Fi şifresini değiştirin.
 
@@ -67,11 +65,25 @@ Webasto düğmesi her basışta aç/kapa yaptığı için kart, Webasto'nun ger�
 | Soğutma kilidi | Webasto durduktan sonra yeniden başlatılmadan önce kalan bekleme süresi |
 | Son 2 saat | İç ortam (mavi) ve Webasto çıkışı (turuncu) sıcaklık grafiği; kesik çizgi hedef |
 
+### Wi-Fi olmadan ısıtmayı açıp kapatmak
+
+Telefonla karta bağlanılamıyorsa ısıtma, kapının yanındaki **alarm anahtarıyla** açılıp kapatılabilir:
+
+1. Alarm anahtarını **10 saniye içinde en az 5 kez** aç-kapa yapın (örneğin aç-kapa-aç-kapa-aç-kapa). Anahtarı başladığı konumda bırakmak için 6 kez yapın.
+2. Anahtarı bırakın. 1,5 saniye sonra kart ısıtmayı tersine çevirir:
+    - **2 uzun bip:** ısıtma açıldı.
+    - **1 uzun bip:** ısıtma kapandı.
+3. Komut, panelden verilmiş gibi hatırlanır; elektrik kesilse de geçerli kalır.
+
+> Alarm anahtarı hırsız alarmını da kurar. Anahtar açık konumda kalırsa ve kapı kapalıysa alarm 60 saniye sonra kurulur; içerideyseniz anahtarı kapalı konumda bırakın.
+>
+> Kart, anahtardaki kontak sıçramalarını ve parazitleri ayıklar: 150 ms'den kısa süren konum değişimleri hareketi geçersiz kılar. Yavaş (10 saniyeden uzun) ya da 5'ten az değişim de sayılmaz.
+
 **Örnek:** Hedef 21,5 °C ve açma-kapama aralığı ±1 °C ise, Webasto ortam 20,5 °C'ye düşünce başlar, 22,5 °C'ye çıkınca durur.
 
-> Kart açıldığında da önce 2 dakika Webasto'nun çalışıp çalışmadığını aynı yöntemle anlar.
+> **Açılış tespiti:** Kart açılınca Webasto'nun çalışıp çalışmadığını çıkış sıcaklığından anlar. Çıkış iç ortama yakınsa (Webasto kapalı) yaklaşık **30 saniyede**, belirgin ısınıyorsa yine kısa sürede karar verir. Çıkış sıcaksa en fazla 2 dakika izler: yeni kapanmış, hâlâ sıcak bir Webasto'yu çalışıyor sanmamak için. Emin olamazsa Webasto'yu kapalı kabul eder; yanılmışsa ilk başlatmada kendini düzeltir.
 >
-> Kart her açıldığında **ısıtma kapalı** başlar. Elektrik kesilip geldiğinde Webasto kendiliğinden çalışmaz; ısıtmayı yeniden açmanız gerekir.
+> **Kart son komutu hatırlar.** Isıtmayı açtıysanız elektrik kesilip gelse de ısıtma açık devam eder; kapattıysanız kapalı kalır. Kart önce Webasto'nun o anki durumunu anlar, sonra termostat kaldığı yerden çalışır.
 
 <br clear="right">
 
@@ -103,16 +115,16 @@ Kart Webasto'yu iki aşamada kontrol eder. Arıza ancak iki kontrol de aynı son
 - **Başlatma:** Kart düğmeye basar ve çıkışın 5 dakika içinde 10 °C ısınmasını bekler. En az 3 °C ısındıysa da Webasto çalışıyor kabul edilir.
 - **Durdurma:** Kart düğmeye basar ve çıkışın 5 dakika içinde en yüksek değerinden 3 °C soğumasını bekler. Webasto'nun fanı durduktan sonra bir süre ılık hava üflediği için süre sonunda en az 1 °C soğuma da yeterli sayılır.
 
-**2. kontrol (arızadan emin olmak için):** 1. kontrol tutmazsa kart hemen arıza vermez, durumu **Kontrol ediliyor** olur. Kart bu sırada Webasto'ya **hiçbir komut göndermez**; 3 dakika boyunca çıkış sıcaklığının eğimine (yükseliyor mu, düşüyor mu) ve iç ortamdan ne kadar sıcak olduğuna bakar. Sonuç belirsizse izlemeyi en fazla iki kez 2'şer dakika uzatır.
+**2. kontrol (arızadan emin olmak için):** 1. kontrol tutmazsa kart hemen arıza vermez, durumu **Kontrol ediliyor** olur. Kart bu sırada Webasto'ya **hiçbir komut göndermez**; 3 dakika boyunca çıkış sıcaklığının eğimine (yükseliyor mu, düşüyor mu) ve iç ortamdan ne kadar sıcak olduğuna bakar. Bu 3 dakikalık izlemeye bir **kontrol turu** denir. Fabrika ayarı 1 turdur; sonuç kararsız kalırsa kaç tur daha izleneceği [Ayarlar > Isıtma](#isıtma)'dan 1–3 arası seçilebilir.
 
 | Ne doğrulanıyordu | Çıkış yükseliyor ya da sıcak ve sabit | Çıkış düşüyor ya da iç ortama yakın |
 | --- | --- | --- |
 | Başlatma | Webasto çalışıyor kabul edilir, arıza yok | Webasto başlamamış: kart bir kez daha başlatmayı dener; ikinci denemede de iki kontrol tutmazsa **Arıza: başlamadı** |
-| Durdurma | Webasto durmamış: **Arıza: kapanmadı**. Webasto'yu yanlışlıkla yeniden çalıştırmamak için kart ikinci kez düğmeye **basmaz** | Webasto durmuş kabul edilir, arıza yok |
+| Durdurma | Webasto durmamış: **Arıza: kapanmadı**. Webasto'yu yanlışlıkla yeniden çalıştırmamak için kart ikinci kez düğmeye **basmaz** | Webasto durmuş kabul edilir, arıza yok. Çıkış hâlâ çok sıcaksa düşüşün hızlı olması gerekir; yavaş düşüş, gücünü azaltmış ama çalışan bir Webasto da olabilir |
 
 Eğilime bakmak, sensör Webasto ağzından uzakta olduğunda ve kapı açılıp iç ortam birden soğuduğunda da doğru karar verir. Çünkü karar, Webasto çıkışındaki sıcaklığın kendi gidişatına göre verilir; iç ortamdaki ani değişimler sonucu değiştirmez. Webasto çalıştığı hâlde dış hava çok soğuk olduğu için karavan hedefe ulaşamıyorsa, bu arıza sayılmaz; Webasto çalışmaya devam eder.
 
-Bu yüzden gerçek bir arızanın ekrana gelmesi biraz daha uzun sürer: başlamayan bir Webasto için yaklaşık 16 dakika (en fazla 24), durmayan bir Webasto için yaklaşık 8 dakika (en fazla 12).
+Bu yüzden gerçek bir arızanın ekrana gelmesi biraz daha uzun sürer. 1 turla: başlamayan bir Webasto için yaklaşık 16 dakika, durmayan bir Webasto için yaklaşık 8 dakika. Her ek tur bu süreleri en fazla 3 dakika (başlatmada 6 dakika) uzatır.
 
 Bu süreleri ve sıcaklık farklarını [Ayarlar > Isıtma](#isıtma)'dan değiştirebilirsiniz.
 
@@ -120,7 +132,7 @@ Bu süreleri ve sıcaklık farklarını [Ayarlar > Isıtma](#isıtma)'dan deği�
 
 1. Webasto'yu kontrol edin: yakıt, sigorta, Webasto'nun kendi arıza kodu.
 2. Webasto'nun gerçekte açık mı kapalı mı olduğuna bakın.
-3. Ekrandaki **Arızayı sil** düğmesine basın. Kart 2 dakika boyunca çıkış sıcaklığının gidişatını izleyerek Webasto'nun o an çalışıp çalışmadığını anlar, sonra otomatik kontrole döner. Emin olamazsa Webasto'yu kapalı kabul eder; yanılmışsa ilk başlatmada kendini düzeltir.
+3. Ekrandaki **Arızayı sil** düğmesine basın. Kart Webasto'nun o an çalışıp çalışmadığını çıkış sıcaklığının gidişatından anlar (aşağıdaki açılış tespitiyle aynı), sonra otomatik kontrole döner.
 
 **Koruma süreleri:**
 
@@ -184,7 +196,9 @@ Bir ikaz oluşunca ekranda ne yapmanız gerektiğini anlatan bir pencere açıl�
 | İkaz | Kartın sesi |
 | --- | --- |
 | Gaz, duman, hırsız | Sürekli kesik siren |
-| Webasto arızası, sensör okunamıyor | İkaz başlarken çift bip, sonra 30 saniyede bir çift bip |
+| Webasto arızası | İkaz başlarken 3 kısa bip, sonra 30 saniyede bir 3 kısa bip |
+| Sensör okunamıyor | İkaz başlarken çift bip, sonra 30 saniyede bir çift bip |
+| Alarm anahtarıyla ısıtma açıldı / kapandı | 2 uzun bip / 1 uzun bip |
 | Hırsız alarmı giriş süresi | Saniyede bir bip, son 10 saniyede hızlı bip |
 
 ### Duman dedektörünü sıfırlama
@@ -255,6 +269,7 @@ Sayısal ayarlar **−** / **+** düğmeleriyle değiştirilir. Basılı tutarsa
 | *Webasto'nun çalıştığını anlama:* Beklenen ısınma | Bu kadar ısınırsa Webasto çalışıyor sayılır | 2–30 °C | 10 °C |
 | *Webasto'nun durduğunu anlama:* Bekleme süresi | Durdurmadan sonra çıkışın soğuması için beklenen süre | 1–20 dk | 5 dk |
 | *Webasto'nun durduğunu anlama:* Beklenen soğuma | Çıkış en yüksek değerinden bu kadar düşerse Webasto durmuş sayılır | 1–15 °C | 3 °C |
+| *İkinci kontrol:* Kontrol turu | İlk kontrol tutmazsa çıkış eğilimi 3 dk izlenir; sonuç kararsızsa bu sayıya kadar 3'er dk daha. Sensör Webasto'dan uzaksa 2–3 seçin | 1–3 tur | 1 tur |
 
 > Webasto çalıştığı hâlde sık sık **Arıza** görüyorsanız:
 > - Arıza başlatmada oluyorsa "Beklenen ısınma"yı azaltın ya da "Bekleme süresi"ni uzatın.
@@ -297,22 +312,22 @@ Sayısal ayarlar **−** / **+** düğmeleriyle değiştirilir. Basılı tutarsa
 
 - **Giriş ekranı başlığı:** Giriş sayfasında logonun altında görünen yazı, örneğin "Yılmaz Ailesinin Karavanı".
 - **Kullanıcı adı ve şifre:**
-  - Değiştirmek için şu anki şifreyi de girmeniz gerekir.
-  - Yeni şifre en az 6 karakter olmalıdır.
-  - Şifre değişince açık olan diğer oturumlar kapanır.
+    - Değiştirmek için şu anki şifreyi de girmeniz gerekir.
+    - Yeni şifre en az 6 karakter olmalıdır.
+    - Şifre değişince açık olan diğer oturumlar kapanır.
 
 ### Wi-Fi ağı
 
 <img src="kilavuz/23_ayar_wifi.png" width="260" align="right">
 
 - **Bağlanınca sayfayı kendiliğinden aç:**
-  - Açıkken, uygulaması olmayan bir telefon Wi-Fi'ye bağlanınca giriş sayfası kendiliğinden açılır.
-  - KaraVan uygulamasını kullanan telefonları kart tanır ve onlarda sayfayı açmaz. Uygulama yüklü bir telefon karta ilk kez bağlandığında sayfa bir kez daha açılabilir; sonrakilerde açılmaz.
-  - Kapalıyken sayfa hiçbir telefonda kendiliğinden açılmaz.
-  - Bu ayar düğmeye dokununca hemen kaydedilir.
+    - Açıkken, uygulaması olmayan bir telefon Wi-Fi'ye bağlanınca giriş sayfası kendiliğinden açılır.
+    - KaraVan uygulamasını kullanan telefonları kart tanır ve onlarda sayfayı açmaz. Uygulama yüklü bir telefon karta ilk kez bağlandığında sayfa bir kez daha açılabilir; sonrakilerde açılmaz.
+    - Kapalıyken sayfa hiçbir telefonda kendiliğinden açılmaz.
+    - Bu ayar düğmeye dokununca hemen kaydedilir.
 - **Ağ adı ve Wi-Fi şifresi:**
-  - Wi-Fi şifresi en az 8 karakter olmalıdır.
-  - Kaydedince kart yeniden başlar. Telefonu yeni ağ adına ve şifreye göre yeniden bağlamanız gerekir.
+    - Wi-Fi şifresi en az 8 karakter olmalıdır.
+    - Kaydedince kart yeniden başlar. Telefonu yeni ağ adına ve şifreye göre yeniden bağlamanız gerekir.
 
 <br clear="right">
 
@@ -327,15 +342,15 @@ Sayısal ayarlar **−** / **+** düğmeleriyle değiştirilir. Basılı tutarsa
 </table>
 
 - **Bağlı cihazlar:**
-  - Kartın Wi-Fi ağına bağlı telefonları, ne kadar süredir bağlı olduklarını ve sinyal güçlerini gösterir.
-  - Kart en fazla 4 cihaza izin verir.
-  - Tanımadığınız bir cihaz görürseniz Wi-Fi şifresini değiştirin.
+    - Kartın Wi-Fi ağına bağlı telefonları, ne kadar süredir bağlı olduklarını ve sinyal güçlerini gösterir.
+    - Kart en fazla 4 cihaza izin verir.
+    - Tanımadığınız bir cihaz görürseniz Wi-Fi şifresini değiştirin.
 - **Servis:**
-  - Yedek röleyi (Röle 4) açıp kapatabilir, buzzer'ı deneyebilirsiniz.
-  - Altta tüm rölelerin anlık durumu görünür.
+    - Yedek röleyi (Röle 4) açıp kapatabilir, buzzer'ı deneyebilirsiniz.
+    - Altta tüm rölelerin anlık durumu görünür.
 - **Sistem:**
-  - Yazılım sürümünü, çalışma süresini ve bellek durumunu gösterir.
-  - **Çıkış yap** ve **Yeniden başlat** düğmeleri buradadır. Yeniden başlayan kartta ısıtma kapalı açılır.
+    - Yazılım sürümünü, çalışma süresini ve bellek durumunu gösterir.
+    - **Çıkış yap** ve **Yeniden başlat** düğmeleri buradadır. Yeniden başlayan kart ısıtmayı son durumuyla (açık/kapalı) sürdürür.
 
 ---
 
@@ -351,9 +366,9 @@ Tarayıcı yerine KaraVan uygulamasını kullanırsanız iki şey kazanırsını
 1. Bu deponun **Releases** bölümünden en yeni `KaraVan.apk` dosyasını telefona indirin.
 2. Dosyaya dokunun. Telefon "bilinmeyen kaynak" uyarısı verirse bu kaynaktan yüklemeye izin verin.
 3. Uygulamayı açın.
-   - **Bildirim izni** sorulduğunda **İzin ver**'i seçin.
-   - **Pil tasarrufu muafiyeti** sorulduğunda **İzin ver**'i seçin.
-4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin.
+    - **Bildirim izni** sorulduğunda **İzin ver**'i seçin.
+    - **Pil tasarrufu muafiyeti** sorulduğunda **İzin ver**'i seçin.
+4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin. Telefon henüz bağlı değilse uygulama logolu **"Bağlantı bekleniyor"** ekranında bekler ve bağlantı gelince paneli kendiliğinden açar.
 
 **Bildirimler nasıl çalışır:**
 
@@ -385,9 +400,9 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 - **Kısa basış:** Çalan ikaz sesini susturur.
 - **30 saniye basılı tutmak:** Giriş bilgilerini fabrika değerlerine döndürür (**admin** / **karavan**).
-  - Basılı tutarken 10. ve 20. saniyede kısa bir bip duyulur.
-  - Açık oturumların hepsi kapanır.
-  - Wi-Fi ağ adı ve şifresi değişmez.
+    - Basılı tutarken 10. ve 20. saniyede kısa bir bip duyulur.
+    - Açık oturumların hepsi kapanır.
+    - Wi-Fi ağ adı ve şifresi değişmez.
 
 ---
 
@@ -400,7 +415,8 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 | "Kullanıcı adı veya şifre hatalı" | Büyük/küçük harfe dikkat edin. Unuttuysanız BOOT düğmesini 30 sn basılı tutun |
 | Giriş 60 sn kilitlendi | 5 kez yanlış şifre girildi; bir dakika bekleyin |
 | Webasto sık sık "Arıza" veriyor | Arıza ancak iki kontrol de tutmazsa verilir; Webasto'yu ve çıkış sensörünü kontrol edin (sensör Webasto'nun üflediği havayı görmeli). Sorun yoksa Ayarlar > Isıtma > Gelişmiş'teki beklenen ısınma/soğuma değerlerini küçültün |
-| Durum uzun süre "Kontrol ediliyor" | Normaldir; en fazla 7 dakika sürer. Bu sırada Webasto'ya komut gönderilmez |
+| Durum uzun süre "Kontrol ediliyor" | Normaldir; her kontrol turu 3 dakika sürer (Ayarlar > Isıtma > Kontrol turu). Bu sırada Webasto'ya komut gönderilmez |
+| Telefon karta bağlanamıyor, ısıtmayı açmak gerekiyor | Alarm anahtarını 10 sn içinde 6 kez aç-kapa yapın; 2 uzun bip ısıtmanın açıldığını gösterir ([ayrıntılar](#wi-fi-olmadan-ısıtmayı-açıp-kapatmak)) |
 | Webasto ısıtma kapalıyken çalışıyor | Webasto elle açılmış olabilir. Kart ısıtma kapalıyken Webasto'ya komut göndermez; Webasto'yu kendi düğmesinden kapatın |
 | "İç ortam sensörü okunamıyor" | Sensör kablosunu kontrol edin. Bu sırada Webasto otomatik başlatılmaz |
 | Duman ikazı susmuyor | Gerçek duman yoksa "dedektörü şimdi sıfırla" düğmesini kullanın |
@@ -438,4 +454,4 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 ---
 
-*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.1.0*
+*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.0*
