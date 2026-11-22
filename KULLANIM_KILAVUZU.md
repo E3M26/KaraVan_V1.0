@@ -1,6 +1,6 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.3.1 · Android uygulaması sürüm 1.4**
+**Kart yazılımı sürüm 1.3.2 · Android uygulaması sürüm 1.5**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
@@ -35,6 +35,8 @@ KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz
 > **İlk iş:** Ayarlar bölümünden hem giriş şifresini hem Wi-Fi şifresini değiştirin.
 
 Art arda 5 kez yanlış şifre girilirse giriş 60 saniye kilitlenir. Unuttuysanız [BOOT düğmesiyle sıfırlayabilirsiniz](#8-kart-üzerindeki-led-ve-boot-düğmesi).
+
+Bu kılavuzun PDF hâli, giriş sayfasının altındaki **Kullanım kılavuzu (PDF)** bağlantısından ve uygulamanın bağlantı bekleme ekranından giriş yapmadan da indirilebilir (internet gerekir).
 
 Ekranın altında dört sekme vardır: **Isıtma**, **Güvenlik**, **Olaylar** ve **Ayarlar**. Sağ üstteki yeşil nokta ve "bağlı" yazısı kartla bağlantının sürdüğünü gösterir.
 
@@ -351,7 +353,6 @@ Sayısal ayarlar **−** / **+** düğmeleriyle değiştirilir. Basılı tutarsa
 - **Sistem:**
     - Yazılım sürümünü, çalışma süresini ve bellek durumunu gösterir.
     - **Çıkış yap** ve **Yeniden başlat** düğmeleri buradadır. Yeniden başlayan kart ısıtmayı son durumuyla (açık/kapalı) sürdürür.
-- **Kullanım kılavuzu (PDF):** Bakım bölümünün en altındaki bağlantı bu kılavuzu GitHub'dan indirir (internet gerekir).
 
 ---
 
@@ -369,7 +370,7 @@ Tarayıcı yerine KaraVan uygulamasını kullanırsanız iki şey kazanırsını
 3. Uygulamayı açın.
     - **Bildirim izni** sorulduğunda **İzin ver**'i seçin.
     - **Pil tasarrufu muafiyeti** sorulduğunda **İzin ver**'i seçin.
-4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin. Telefon KaraVan ağına bağlı değilse (örneğin evdeki Wi-Fi'ye bağlıysa) uygulama logolu **"Bağlantı bekleniyor"** ekranında bekler; kart bulunamazsa **Wi-Fi ayarları** düğmesi çıkar. Telefon KaraVan ağına bağlanınca panel kendiliğinden açılır; bağlantı koparsa bu ekran geri gelir.
+4. Telefonu KaraVan Wi-Fi'sine bağlayıp giriş yapın. **Beni hatırla**'yı işaretleyin. Telefon KaraVan ağına bağlı değilse (örneğin evdeki Wi-Fi'ye bağlıysa) uygulama logolu **"Bağlantı bekleniyor"** ekranında bekler; kart bulunamazsa **Wi-Fi ayarları** düğmesi çıkar. Telefon KaraVan ağına bağlanınca panel kendiliğinden açılır; bağlantı koparsa bu ekran geri gelir. Bu ekranın altındaki **Kullanım kılavuzu (PDF)** düğmesi bu kılavuzu indirir (internet gerekir).
 
 **Bildirimler nasıl çalışır:**
 
@@ -455,4 +456,4 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 ---
 
-*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.1*
+*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.2*
