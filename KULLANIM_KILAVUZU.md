@@ -1,6 +1,6 @@
 # KaraVan Kontrol Paneli · Kullanım Kılavuzu
 
-**Kart yazılımı sürüm 1.3.2 · Android uygulaması sürüm 1.5**
+**Kart yazılımı sürüm 1.4 · Android uygulaması sürüm 1.5**
 
 KaraVan, karavanınızdaki Webasto ısıtıcıyı otomatik çalıştıran ve gaz, duman ve hırsız alarmlarını izleyen bir kontrol kartıdır. Kart kendi Wi-Fi ağını yayınlar. Telefonunuzu bu ağa bağlayıp tarayıcıdan ya da KaraVan uygulamasından kontrol edersiniz. İnternet gerekmez.
 
@@ -171,7 +171,7 @@ Hırsız alarmı kapının yanındaki, karavanın içinde duran **alarm anahtar�
 
 **Alarm çalınca:**
 
-- Kartın buzzer'ı ve gaz dedektörünün sireni 3 dakika boyunca çalar. Yeni hareket algılanırsa siren yeniden başlar.
+- Kartın buzzer'ı ve gaz dedektörünün sireni 3 dakika boyunca çalar (dakikada bir 5 sn ara ile gaz sensörü kontrol edilir). Yeni hareket algılanırsa siren yeniden başlar.
 - Alarm anahtarını kapatmak sireni **hemen** susturur.
 
 **Sensörler listesi:** Gaz dedektörü, duman dedektörü, kapı, hareket sensörü ve alarm anahtarının anlık durumunu gösterir.
@@ -195,12 +195,16 @@ Bir ikaz oluşunca ekranda ne yapmanız gerektiğini anlatan bir pencere açıl�
 - **Sesi sustur:** Kartın buzzer'ını bu ikaz için susturur. Yeni bir ikaz gelirse ses yeniden çalar.
 - **Pencereyi kapat:** Pencereyi kapatır. Aynı ikaz için pencere tekrar açılmaz, ama ekranın üstündeki kırmızı şerit ikaz bitene kadar kalır.
 
+Kartın buzzer'ı çaldığı her ikazda **gaz dedektörünün kendi sireni de** aynı anda çalar (gaz ikazında dedektör zaten kendisi öter). Sesi susturmak ikisini birden susturur.
+
 | İkaz | Kartın sesi |
 | --- | --- |
-| Gaz, duman, hırsız | Sürekli kesik siren |
-| Webasto arızası | İkaz başlarken 3 kısa bip, sonra 30 saniyede bir 3 kısa bip |
-| Sensör okunamıyor | İkaz başlarken çift bip, sonra 30 saniyede bir çift bip |
-| Alarm anahtarıyla ısıtma açıldı / kapandı | 2 uzun bip / 1 uzun bip |
+| Gaz, duman, hırsız | Sürekli kesik siren; gaz dedektörünün sireni de sürekli çalar |
+| Webasto arızası | İkaz başlarken 3 kısa bip, sonra 30 saniyede bir 3 kısa bip; gaz dedektörü bip'lerle birlikte öter |
+| Sensör okunamıyor | İkaz başlarken çift bip, sonra 30 saniyede bir çift bip; gaz dedektörü bip'lerle birlikte öter |
+| Alarm anahtarıyla ısıtma açıldı / kapandı | 2 uzun bip / 1 uzun bip (yalnız kart buzzer'ı) |
+
+> Gaz dedektörünün sireni çalarken kart gaz sensörünü okuyamaz (siren, dedektörün kontağını da kapatır). Bu yüzden duman veya hırsız sireni sürerken kart her dakika sireni 5 saniye durdurup gaz sensörünü kontrol eder. O sırada gerçek bir gaz kaçağı başlarsa en geç yaklaşık 1 dakika içinde gaz ikazı da verilir. Giriş süresi bip'leri yalnız kart buzzer'ından çalar.
 | Hırsız alarmı giriş süresi | Saniyede bir bip, son 10 saniyede hızlı bip |
 
 ### Duman dedektörünü sıfırlama
@@ -442,7 +446,7 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 | Bağlantı | Görev |
 | --- | --- |
-| Röle 1 | Gaz dedektörüne ikaz sinyali; hırsız alarmında dedektörün sireni çalar |
+| Röle 1 | Gaz dedektörüne ikaz sinyali; tüm ikazlarda dedektörün sireni kart buzzer'ıyla birlikte çalar |
 | Röle 2 | Duman dedektörü beslemesi (NC kontak; çekince besleme kesilir, sıfırlama) |
 | Röle 3 | Webasto düğmesi (1 sn basma) |
 | Röle 4 | Yedek (Ayarlar > Servis'ten açılıp kapatılır) |
@@ -456,4 +460,4 @@ Bildirim çubuğunda ayrıca küçük, sessiz bir **"KaraVan izleniyor"** bildir
 
 ---
 
-*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.3.2*
+*KaraVan kontrol kartı · ESP32-S3 · kart yazılımı 1.4.0*
